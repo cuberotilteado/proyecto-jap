@@ -2,6 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    obtenerUsuario();
 });
 
 function cargarErrores(id, idMensaje) {
@@ -26,6 +27,7 @@ function comprobarErrores(){
     } else {
         location.replace("index.html");
         sessionStorage.setItem ('comprobarErrores',true); 
+        sessionStorage.setItem ("name", document.getElementById("user").value)
     }
 }
 

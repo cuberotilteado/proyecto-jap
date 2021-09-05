@@ -46,9 +46,18 @@ function inicio(){
   }  
 }
 
+function obtenerUsuario(){
+  var nombreUsuario = sessionStorage.getItem("name");
+  var nick = document.getElementById("obtenerUsuario");
+  nick.innerHTML = nombreUsuario;
+  nick.style.color = "White";
+}
+
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  obtenerUsuario();
 });
