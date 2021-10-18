@@ -40,24 +40,21 @@ var getJSONData = function(url){
     });
 }
 
+function cerrarSesion(){
+  sessionStorage.removeItem('name');
+}
+
 function inicio(){
-  if (sessionStorage.getItem('comprobarErrores') == null){   
-      location.replace ("login.html");   
-  }  
+  if ((sessionStorage.getItem('name') === null) && (window.location.href != "login.html") && (window.location.href != "https://cuberotilteado.github.io/proyecto-jap/")){   
+      location.replace ("login.html");
+  }  else {
+    document.getElementById("obtenerUsuario").innerHTML = sessionStorage.getItem("name");
+  }
 }
-
-function obtenerUsuario(){
-  var nombreUsuario = sessionStorage.getItem("name");
-  var nick = document.getElementById("obtenerUsuario");
-  nick.innerHTML = nombreUsuario;
-  nick.style.color = "White";
-}
-
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-  obtenerUsuario();
-});
+ 
+ });

@@ -1,5 +1,7 @@
 var product = {};
 var comenatarios = [];
+var prod = [];
+var prodRel = [];
 
 function showImagesGallery(array){
 
@@ -17,6 +19,29 @@ function showImagesGallery(array){
         `
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+    }
+}
+
+function productosRelacionados(array){
+    var desc = ""
+    prodRel = product.relatedProducts;
+    console.log(prodRel)
+    for(let i = 0; i < array.length; i++){
+        var objetos = array[i];
+        for(let j = 0; j < prodRel.length; j++){
+            if(i == prodRel[j]){
+                desc += `<div class="card row">
+                <div class="card-header">
+                  
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">`+ objetos.name +`</h5>
+                  <img class="card-img-top" src="` + objetos.imgSrc + `" alt="Card image cap">
+                </div>
+              </div>`
+              document.getElementById("relatedProds").innerHTML = desc
+            }
+        }
     }
 }
 
@@ -141,4 +166,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }); 
     });
 
+
+document.addEventListener("DOMContentLoaded", function(e) {
+    getJSONData(PRODUCTS_URL).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+            prod = resultObj.data;
+            productosRelacionados(prod);}
+        }); 
+    });
+    
 
